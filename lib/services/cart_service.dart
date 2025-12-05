@@ -1,5 +1,5 @@
-import '../models/product.dart';
 import 'package:flutter/foundation.dart';
+import '../models/product.dart';
 
 class CartItem {
   final Product product;
@@ -9,8 +9,7 @@ class CartItem {
 
 class CartService extends ChangeNotifier {
   final List<CartItem> _items = [];
-
-  List<CartItem> get items => _items;
+  List<CartItem> get items => List.unmodifiable(_items);
 
   void addItem(Product product, {int qty = 1}) {
     final existing = _items.where((i) => i.product.id == product.id).toList();
@@ -28,14 +27,18 @@ class CartService extends ChangeNotifier {
   }
 
   void updateQty(Product product, int qty) {
+    if (qty < 1) {
+      removeItem(product);
+      return;
+    }
     final item = _items.firstWhere((i) => i.product.id == product.id);
     item.qty = qty;
     notifyListeners();
   }
 
   double subtotal() {
-    return _items.fold(
-        0, (sum, i) => sum + (i.product.salePrice ?? i.product.price) * i.qty);
+    return _items.fold(0.0,
+        (sum, i) => sum + (i.product.salePrice ?? i.product.price) * i.qty);
   }
 
   void clear() {

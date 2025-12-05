@@ -1,49 +1,49 @@
 import 'package:flutter/material.dart';
 import '../widgets/navbar.dart';
 import '../widgets/footer.dart';
-import '../widgets/product_card.dart';
 import '../services/data_service.dart';
-import '../models/product.dart';
+import '../widgets/product_card.dart';
 
-class SalePage extends StatelessWidget {
-  const SalePage({super.key});
+class SearchPage extends StatelessWidget {
+  final String query;
+  const SearchPage({super.key, required this.query});
 
   @override
   Widget build(BuildContext context) {
+    final results = DataService.search(query);
     final width = MediaQuery.of(context).size.width;
     final crossAxisCount = width < 600 ? 2 : 4;
-
-    final List<Product> saleProducts = DataService.getCollections()
-        .expand((c) => c.products)
-        .where((p) => p.salePrice != null)
-        .toList();
 
     return Scaffold(
       appBar: const Navbar(),
       body: ListView(
         children: [
           Padding(
-            padding: const EdgeInsets.all(24),
-            child: Text('Sale Items',
+            padding: const EdgeInsets.all(16),
+            child: Text('Search results for "$query"',
                 style: Theme.of(context).textTheme.headlineSmall),
           ),
           Padding(
-            padding: const EdgeInsets.all(24),
-            child: GridView.count(
+            padding: const EdgeInsets.all(16),
+            child: GridView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),
-              crossAxisCount: crossAxisCount,
-              crossAxisSpacing: 12,
-              mainAxisSpacing: 12,
-              childAspectRatio: 0.7,
-              children: saleProducts.map((p) {
+              itemCount: results.length,
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                crossAxisSpacing: 12,
+                mainAxisSpacing: 12,
+                childAspectRatio: 0.7,
+              ),
+              itemBuilder: (_, i) {
+                final p = results[i];
                 return ProductCard(
                   id: p.id,
                   title: p.title,
                   price: p.salePrice ?? p.price,
                   imageUrl: p.images.first,
                 );
-              }).toList(),
+              },
             ),
           ),
           const Footer(),

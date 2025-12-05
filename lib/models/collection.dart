@@ -1,4 +1,4 @@
-import 'package:union_shop/models/product.dart';
+import 'product.dart';
 
 class Collection {
   final String id;

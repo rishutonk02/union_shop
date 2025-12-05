@@ -3,6 +3,7 @@ import 'package:provider/provider.dart';
 import '../widgets/navbar.dart';
 import '../widgets/footer.dart';
 import '../services/cart_service.dart';
+import '../styles/text_styles.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -46,8 +47,7 @@ class CartPage extends StatelessWidget {
                   padding: const EdgeInsets.all(16),
                   child: Text(
                     'Subtotal: £${cart.subtotal().toStringAsFixed(2)}',
-                    style: const TextStyle(
-                        fontSize: 18, fontWeight: FontWeight.bold),
+                    style: AppTextStyles.h3,
                   ),
                 ),
                 Padding(

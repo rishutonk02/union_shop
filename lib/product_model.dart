@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'styles/text_styles.dart';
 
 class ProductPage extends StatelessWidget {
   const ProductPage({super.key});
@@ -28,10 +29,10 @@ class ProductPage extends StatelessWidget {
                     width: double.infinity,
                     padding: const EdgeInsets.symmetric(vertical: 8),
                     color: const Color(0xFF4d2963),
-                    child: const Text(
+                    child: Text(
                       'PLACEHOLDER HEADER TEXT - STUDENTS TO UPDATE!',
                       textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.white, fontSize: 16),
+                      style: AppTextStyles.body.copyWith(color: Colors.white),
                     ),
                   ),
                   // Main header
@@ -165,7 +166,7 @@ class ProductPage extends StatelessWidget {
                                   SizedBox(height: 8),
                                   Text(
                                     'Image unavailable',
-                                    style: TextStyle(color: Colors.grey),
+                                    style: AppTextStyles.caption,
                                   ),
                                 ],
                               ),
@@ -179,51 +180,29 @@ class ProductPage extends StatelessWidget {
                   const SizedBox(height: 24),
 
                   // Product name
-                  const Text(
-                    'Placeholder Product Name',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black,
-                    ),
-                  ),
+                  const Text('Placeholder Product Name',
+                      style: AppTextStyles.productTitle),
 
                   const SizedBox(height: 12),
 
                   // Product price
-                  const Text(
-                    '£15.00',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF4d2963),
-                    ),
-                  ),
+                  const Text('£15.00', style: AppTextStyles.productPrice),
 
                   const SizedBox(height: 24),
 
                   // Product description
-                  const Text(
-                    'Description',
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.black,
-                    ),
-                  ),
+                  const Text('Description',
+                      style: AppTextStyles.productDescTitle),
                   const SizedBox(height: 8),
                   const Text(
                     'This is a placeholder description for the product. Students should replace this with real product information and implement proper data management.',
-                    style: TextStyle(
-                      fontSize: 16,
-                      color: Colors.grey,
-                      height: 1.5,
-                    ),
+                    style: AppTextStyles.productDesc,
                   ),
                   const SizedBox(height: 12),
-                  const Text(
+                  Text(
                     'Students should add size options, colour options, quantity selector, add to cart button, and buy now button here.',
-                    style: TextStyle(fontSize: 14, color: Colors.black87),
+                    style:
+                        AppTextStyles.bodySmall.copyWith(color: Colors.black87),
                   ),
                 ],
               ),
@@ -239,11 +218,7 @@ class ProductPage extends StatelessWidget {
                 children: [
                   Text(
                     'Placeholder Footer',
-                    style: TextStyle(
-                      color: Colors.grey,
-                      fontSize: 16,
-                      fontWeight: FontWeight.w600,
-                    ),
+                    style: AppTextStyles.footer,
                   ),
                   SizedBox(height: 4),
                   Text('Students should customise this footer section'),

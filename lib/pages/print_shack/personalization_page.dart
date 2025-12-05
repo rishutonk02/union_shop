@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../widgets/navbar.dart';
 import '../../widgets/footer.dart';
+import '../../styles/text_styles.dart';
 
 class PersonalizationPage extends StatefulWidget {
   const PersonalizationPage({super.key});
@@ -10,7 +11,7 @@ class PersonalizationPage extends StatefulWidget {
 }
 
 class _PersonalizationPageState extends State<PersonalizationPage> {
-  String text = 'Your Text Here';
+  String text = 'Your Text';
   String font = 'Roboto';
   Color color = Colors.black;
   double size = 24;
@@ -20,71 +21,57 @@ class _PersonalizationPageState extends State<PersonalizationPage> {
     return Scaffold(
       appBar: const Navbar(),
       body: ListView(
-        padding: const EdgeInsets.all(16),
+        padding: const EdgeInsets.all(24),
         children: [
-          Text('Print Shack Personalisation',
-              style: Theme.of(context).textTheme.headlineSmall),
+          const Text('Print Shack — Personalization', style: AppTextStyles.h2),
           const SizedBox(height: 16),
-          TextFormField(
-            initialValue: text,
+          TextField(
             decoration: const InputDecoration(labelText: 'Text'),
             onChanged: (v) => setState(() => text = v),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           DropdownButton<String>(
             value: font,
             items: const [
               DropdownMenuItem(value: 'Roboto', child: Text('Roboto')),
-              DropdownMenuItem(value: 'Courier', child: Text('Courier')),
-              DropdownMenuItem(value: 'Times', child: Text('Times')),
+              DropdownMenuItem(value: 'Montserrat', child: Text('Montserrat')),
             ],
             onChanged: (v) => setState(() => font = v ?? font),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           Row(
             children: [
-              const Text('Color:'),
-              const SizedBox(width: 12),
-              ElevatedButton(
-                onPressed: () => setState(() => color = Colors.black),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.black),
-                child: const Text(''),
+              const Text('Color: '),
+              const SizedBox(width: 8),
+              DropdownButton<Color>(
+                value: color,
+                items: const [
+                  DropdownMenuItem(value: Colors.black, child: Text('Black')),
+                  DropdownMenuItem(value: Colors.red, child: Text('Red')),
+                  DropdownMenuItem(value: Colors.blue, child: Text('Blue')),
+                ],
+                onChanged: (v) => setState(() => color = v ?? color),
               ),
-              const SizedBox(width: 12),
-              ElevatedButton(
-                onPressed: () => setState(() => color = Colors.red),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
-                child: const Text(''),
-              ),
-              const SizedBox(width: 12),
-              ElevatedButton(
-                onPressed: () => setState(() => color = Colors.blue),
-                style: ElevatedButton.styleFrom(backgroundColor: Colors.blue),
-                child: const Text(''),
+              const SizedBox(width: 24),
+              const Text('Size: '),
+              Slider(
+                value: size,
+                min: 12,
+                max: 48,
+                divisions: 12,
+                label: size.toStringAsFixed(0),
+                onChanged: (v) => setState(() => size = v),
               ),
             ],
           ),
           const SizedBox(height: 16),
-          Slider(
-            value: size,
-            min: 12,
-            max: 48,
-            divisions: 6,
-            label: '${size.round()}',
-            onChanged: (v) => setState(() => size = v),
-          ),
-          const SizedBox(height: 24),
           Container(
-            padding: const EdgeInsets.all(16),
-            color: Colors.grey.shade200,
+            height: 200,
             alignment: Alignment.center,
+            color: Colors.grey.shade200,
             child: Text(
               text,
-              style: TextStyle(
-                fontFamily: font,
-                fontSize: size,
-                color: color,
-              ),
+              style: TextStyle(fontSize: size, color: color, fontFamily: font),
             ),
           ),
           const SizedBox(height: 24),

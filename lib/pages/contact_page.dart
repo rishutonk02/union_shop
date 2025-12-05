@@ -3,20 +3,20 @@ import '../widgets/navbar.dart';
 import '../widgets/footer.dart';
 import '../styles/text_styles.dart';
 
-class AccountPagePlaceholder extends StatelessWidget {
-  const AccountPagePlaceholder({super.key});
+class ContactPage extends StatelessWidget {
+  const ContactPage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Navbar(),
       body: ListView(
-        padding: const EdgeInsets.all(24),
+        padding: const EdgeInsets.all(16),
         children: const [
-          Text('Account', style: AppTextStyles.h2),
+          Text('Contact Us', style: AppTextStyles.h2),
           SizedBox(height: 12),
-          Text(
-              'This is a placeholder. In Phase 3, this will show your orders, saved addresses, etc.'),
+          Text('Email: support@unionshopclone.com'),
+          Text('Phone: +44 1234 567890'),
           SizedBox(height: 24),
           Footer(),
         ],

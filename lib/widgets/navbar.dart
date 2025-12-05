@@ -10,20 +10,21 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
         final isMobile = constraints.maxWidth < 800;
         if (isMobile) {
           return AppBar(
-            title: const Text('PLACEHOLDER HEADER TEXT - STUDENTS TO UPDATE!'),
+            title: const Text('union shop'),
             actions: [
-              IconButton(icon: const Icon(Icons.search), onPressed: () {}),
               IconButton(
-                icon: const Icon(Icons.shopping_bag_outlined),
+                icon: const Icon(Icons.person_outline),
+                onPressed: () => Navigator.pushNamed(context, '/signin'),
+              ),
+              IconButton(
+                icon: const Icon(Icons.shopping_cart_outlined),
                 onPressed: () => Navigator.pushNamed(context, '/cart'),
               ),
-              IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
             ],
           );
         }
         return AppBar(
-          title: const Text('PLACEHOLDER HEADER TEXT - STUDENTS TO UPDATE!'),
-          toolbarHeight: 64,
+          title: const Text('union shop'),
           actions: [
             TextButton(
                 onPressed: () => Navigator.pushNamed(context, '/'),
@@ -37,12 +38,15 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
             TextButton(
                 onPressed: () => Navigator.pushNamed(context, '/about'),
                 child: const Text('About')),
-            const SizedBox(width: 16),
-            IconButton(icon: const Icon(Icons.search), onPressed: () {}),
+            TextButton(
+                onPressed: () => Navigator.pushNamed(context, '/contact'),
+                child: const Text('Contact')),
             IconButton(
-                icon: const Icon(Icons.shopping_bag_outlined),
+                icon: const Icon(Icons.person_outline),
+                onPressed: () => Navigator.pushNamed(context, '/signin')),
+            IconButton(
+                icon: const Icon(Icons.shopping_cart_outlined),
                 onPressed: () => Navigator.pushNamed(context, '/cart')),
-            IconButton(icon: const Icon(Icons.menu), onPressed: () {}),
           ],
         );
       },

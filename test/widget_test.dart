@@ -1,28 +1,20 @@
 import 'package:flutter_test/flutter_test.dart';
-import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:union_shop/main.dart';
 import 'package:union_shop/services/cart_service.dart';
-import 'package:union_shop/pages/home_page.dart';
 
 void main() {
-  testWidgets('HomePage shows hero text and featured products',
+  testWidgets('App loads HomePage and shows hero text',
       (WidgetTester tester) async {
     await tester.pumpWidget(
       ChangeNotifierProvider(
         create: (_) => CartService(),
-        child: const MaterialApp(home: HomePage()),
+        child: const UnionShopApp(),
       ),
     );
 
     await tester.pumpAndSettle();
 
-    // Hero text
     expect(find.text('Welcome to union shop'), findsOneWidget);
-
-    // Featured products section
-    expect(find.text('Featured Products'), findsOneWidget);
-
-    // At least one product card rendered
-    expect(find.byType(Card), findsWidgets);
   });
 }

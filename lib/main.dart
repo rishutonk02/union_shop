@@ -18,14 +18,15 @@ class UnionShopApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Union Shop',
+      title: 'union shop',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: const Color(0xFF004080)),
+        colorScheme: ColorScheme.fromSeed(
+            seedColor: const Color(0xFF00695c)), // teal theme
         useMaterial3: true,
       ),
-      onGenerateRoute: AppRouter.onGenerateRoute,
       initialRoute: '/',
+      onGenerateRoute: AppRouter.onGenerateRoute,
     );
   }
 }
