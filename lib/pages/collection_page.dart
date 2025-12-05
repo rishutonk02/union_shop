@@ -5,14 +5,36 @@ import '../widgets/product_card.dart';
 import '../services/data_service.dart';
 import '../models/collection.dart';
 
-class CollectionPage extends StatelessWidget {
+class CollectionPage extends StatefulWidget {
   final String collectionId;
   const CollectionPage({super.key, required this.collectionId});
 
   @override
-  Widget build(BuildContext context) {
-    final Collection? collection = DataService.getCollection(collectionId);
+  State<CollectionPage> createState() => _CollectionPageState();
+}
 
+class _CollectionPageState extends State<CollectionPage> {
+  late Collection? collection;
+  late List productsToShow;
+
+  @override
+  void initState() {
+    super.initState();
+    collection = DataService.getCollection(widget.collectionId);
+    productsToShow = collection?.products ?? [];
+  }
+
+  void _onSearch(String query) {
+    setState(() {
+      final q = query.toLowerCase();
+      productsToShow = collection!.products
+          .where((p) => p.title.toLowerCase().contains(q))
+          .toList();
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     if (collection == null) {
       return const Scaffold(body: Center(child: Text('Collection not found')));
     }
@@ -26,13 +48,23 @@ class CollectionPage extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(24),
-            child: Text(collection.title,
+            child: Text(collection!.title,
                 style: Theme.of(context).textTheme.headlineSmall),
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24),
             child: Row(
               children: [
+                Expanded(
+                  child: TextField(
+                    decoration: const InputDecoration(
+                      labelText: 'Search products',
+                      prefixIcon: Icon(Icons.search),
+                    ),
+                    onChanged: _onSearch,
+                  ),
+                ),
+                const SizedBox(width: 12),
                 DropdownButton<String>(
                   value: 'All',
                   items: const [
@@ -65,7 +97,7 @@ class CollectionPage extends StatelessWidget {
               crossAxisSpacing: 12,
               mainAxisSpacing: 12,
               childAspectRatio: 0.7,
-              children: collection.products.map((p) {
+              children: productsToShow.map((p) {
                 return ProductCard(
                   id: p.id,
                   title: p.title,

@@ -15,6 +15,16 @@ class DataService {
       collectionId: 'hoodies',
     ),
     Product(
+      id: 'p6',
+      title: 'Union Tee',
+      description: 'Classic union tee',
+      price: 12.00,
+      images: ['assets/images/tshirt.jpeg'],
+      sizes: ['S', 'M', 'L'],
+      colors: ['White', 'Navy'],
+      collectionId: 'tees',
+    ),
+    Product(
       id: 'p2',
       title: 'Union T-Shirt',
       description: 'Classic T-Shirt',
@@ -68,6 +78,13 @@ class DataService {
       description: 'Comfertable hoodies for uni life',
       image: 'assets/images/hoodieu.jpg',
       products: _products.where((p) => p.collectionId == 'hoodies').toList(),
+    ),
+    Collection(
+      id: 'tees',
+      title: 'Tees',
+      description: 'T-Shirts and tees',
+      image: 'assets/images/tshirt2.jpg',
+      products: _products.where((p) => p.collectionId == 'tees').toList(),
     ),
     Collection(
       id: 'T-Shirts',

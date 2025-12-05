@@ -33,8 +33,7 @@ class AppRouter {
       case '/signup':
         return MaterialPageRoute(builder: (_) => const SignUpPage());
       case '/account':
-        return MaterialPageRoute(
-            builder: (_) => const AccountPagePlaceholder());
+        return MaterialPageRoute(builder: (_) => const AccountPage());
       default:
         if (uri.pathSegments.length == 2) {
           if (uri.pathSegments.first == 'collections') {
