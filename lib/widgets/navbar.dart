@@ -10,7 +10,27 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
         final isMobile = constraints.maxWidth < 800;
         if (isMobile) {
           return AppBar(
-            title: const Text('union shop'),
+            title: Row(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                SizedBox(
+                  height: 32,
+                  width: 32,
+                  child: Image.asset(
+                    'assets/images/upsu.webp',
+                    fit: BoxFit.contain,
+                    errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Flexible(
+                  child: const Text(
+                    'union shop',
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+              ],
+            ),
             actions: [
               IconButton(
                 icon: const Icon(Icons.person_outline),
@@ -24,7 +44,27 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
           );
         }
         return AppBar(
-          title: const Text('union shop'),
+          title: Row(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              SizedBox(
+                height: 36,
+                width: 36,
+                child: Image.asset(
+                  'assets/images/upsu.webp',
+                  fit: BoxFit.contain,
+                  errorBuilder: (_, __, ___) => const SizedBox.shrink(),
+                ),
+              ),
+              const SizedBox(width: 12),
+              Flexible(
+                child: const Text(
+                  'union shop',
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
+            ],
+          ),
           actions: [
             TextButton(
                 onPressed: () => Navigator.pushNamed(context, '/'),
