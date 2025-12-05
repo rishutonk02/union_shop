@@ -16,21 +16,36 @@ class CollectionPage extends StatefulWidget {
 class _CollectionPageState extends State<CollectionPage> {
   late Collection? collection;
   late List productsToShow;
+  final TextEditingController _searchController = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     collection = DataService.getCollection(widget.collectionId);
-    productsToShow = collection?.products ?? [];
+    productsToShow = collection?.products.toList() ?? [];
+    _searchController.addListener(_onSearchChanged);
   }
 
-  void _onSearch(String query) {
+  void _onSearchChanged() {
+    final q = _searchController.text.toLowerCase();
     setState(() {
-      final q = query.toLowerCase();
-      productsToShow = collection!.products
-          .where((p) => p.title.toLowerCase().contains(q))
-          .toList();
+      if (q.isEmpty) {
+        productsToShow = collection?.products.toList() ?? [];
+      } else {
+        productsToShow = (collection?.products ?? [])
+            .where((p) =>
+                p.title.toLowerCase().contains(q) ||
+                p.description.toLowerCase().contains(q))
+            .toList();
+      }
     });
+  }
+
+  @override
+  void dispose() {
+    _searchController.removeListener(_onSearchChanged);
+    _searchController.dispose();
+    super.dispose();
   }
 
   @override
@@ -57,11 +72,9 @@ class _CollectionPageState extends State<CollectionPage> {
               children: [
                 Expanded(
                   child: TextField(
-                    decoration: const InputDecoration(
-                      labelText: 'Search products',
-                      prefixIcon: Icon(Icons.search),
-                    ),
-                    onChanged: _onSearch,
+                    controller: _searchController,
+                    decoration:
+                        const InputDecoration(hintText: 'Search products'),
                   ),
                 ),
                 const SizedBox(width: 12),

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/navbar.dart';
 import '../../widgets/footer.dart';
-import '../../styles/text_styles.dart';
 
 class AboutPrintShackPage extends StatelessWidget {
   const AboutPrintShackPage({super.key});
@@ -13,7 +12,8 @@ class AboutPrintShackPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: const [
-          Text('About Print Shack', style: AppTextStyles.h2),
+          Text('About Print Shack',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           SizedBox(height: 12),
           Text(
               'Print Shack lets you personalize apparel and accessories with custom text and colors.'),

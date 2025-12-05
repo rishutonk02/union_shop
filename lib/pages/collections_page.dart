@@ -40,19 +40,25 @@ class CollectionsPage extends StatelessWidget {
                     child: Column(
                       children: [
                         Expanded(
-                          child: Image.network(
-                            c.image,
-                            fit: BoxFit.cover,
-                            width: double.infinity,
-                            errorBuilder: (context, error, stackTrace) {
-                              return Container(
-                                color: Colors.grey[300],
-                                child: const Center(
-                                    child: Icon(Icons.image_not_supported,
-                                        color: Colors.grey)),
-                              );
-                            },
-                          ),
+                          child: c.image.startsWith('http')
+                              ? Image.network(
+                                  c.image,
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                  errorBuilder: (context, error, stackTrace) {
+                                    return Container(
+                                      color: Colors.grey[300],
+                                      child: const Center(
+                                          child: Icon(Icons.image_not_supported,
+                                              color: Colors.grey)),
+                                    );
+                                  },
+                                )
+                              : Image.asset(
+                                  c.image,
+                                  fit: BoxFit.cover,
+                                  width: double.infinity,
+                                ),
                         ),
                         ListTile(
                             title: Text(c.title),

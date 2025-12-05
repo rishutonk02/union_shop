@@ -4,7 +4,6 @@ import '../widgets/footer.dart';
 import '../widgets/product_card.dart';
 import '../services/data_service.dart';
 import '../models/product.dart';
-import '../styles/text_styles.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
@@ -27,22 +26,14 @@ class HomePage extends StatelessWidget {
             child: Stack(
               children: [
                 Positioned.fill(
-                  child: Stack(
-                    children: [
-                      Positioned.fill(
-                        child: Image.network(
-                          'assets/images/upsu.webp',
-                          fit: BoxFit.cover,
-                          width: double.infinity,
-                          height: double.infinity,
-                          errorBuilder: (_, __, ___) =>
-                              Container(color: Colors.grey.shade300),
-                        ),
+                  child: Container(
+                    decoration: const BoxDecoration(
+                      image: DecorationImage(
+                        image: AssetImage('assets/images/upsu.webp'),
+                        fit: BoxFit.cover,
                       ),
-                      Positioned.fill(
-                        child: Container(color: Colors.black.withAlpha(153)),
-                      ),
-                    ],
+                    ),
+                    child: Container(color: Colors.black54),
                   ),
                 ),
                 Positioned(
@@ -52,15 +43,18 @@ class HomePage extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      Text(
+                      const Text(
                         'Welcome to union shop',
-                        style: AppTextStyles.h1.copyWith(color: Colors.white),
+                        style: TextStyle(
+                            fontSize: 32,
+                            fontWeight: FontWeight.bold,
+                            color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 16),
-                      Text(
+                      const Text(
                         'Your one‑stop shop for student gear and merch.',
-                        style: AppTextStyles.h3.copyWith(color: Colors.white),
+                        style: TextStyle(fontSize: 20, color: Colors.white),
                         textAlign: TextAlign.center,
                       ),
                       const SizedBox(height: 32),
@@ -86,7 +80,9 @@ class HomePage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Featured Products', style: AppTextStyles.h3),
+                const Text('Featured Products',
+                    style:
+                        TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
                 const SizedBox(height: 16),
                 GridView.count(
                   shrinkWrap: true,

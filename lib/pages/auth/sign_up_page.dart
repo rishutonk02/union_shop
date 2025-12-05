@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/navbar.dart';
 import '../../widgets/footer.dart';
-import '../../styles/text_styles.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -23,7 +22,8 @@ class _SignUpPageState extends State<SignUpPage> {
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
-          const Text('Sign Up', style: AppTextStyles.h2),
+          const Text('Sign Up',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           Form(
             key: _formKey,

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import '../styles/text_styles.dart';
 
 class ProductCard extends StatelessWidget {
   final String id;
@@ -25,31 +24,38 @@ class ProductCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Expanded(
-              child: Image.network(
-                imageUrl,
-                fit: BoxFit.cover,
-                width: double.infinity,
-                errorBuilder: (context, error, stackTrace) {
-                  return Container(
-                    color: Colors.grey[300],
-                    child: const Center(
-                      child:
-                          Icon(Icons.image_not_supported, color: Colors.grey),
+              child: imageUrl.startsWith('http')
+                  ? Image.network(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
+                      errorBuilder: (context, error, stackTrace) {
+                        return Container(
+                          color: Colors.grey[300],
+                          child: const Center(
+                            child: Icon(Icons.image_not_supported,
+                                color: Colors.grey),
+                          ),
+                        );
+                      },
+                    )
+                  : Image.asset(
+                      imageUrl,
+                      fit: BoxFit.cover,
+                      width: double.infinity,
                     ),
-                  );
-                },
-              ),
             ),
             const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Text(title, style: AppTextStyles.bodySmall, maxLines: 2),
+              child: Text(title,
+                  style: const TextStyle(fontSize: 14), maxLines: 2),
             ),
             const SizedBox(height: 4),
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
               child: Text('£${price.toStringAsFixed(2)}',
-                  style: AppTextStyles.caption),
+                  style: const TextStyle(fontSize: 13, color: Colors.grey)),
             ),
           ],
         ),

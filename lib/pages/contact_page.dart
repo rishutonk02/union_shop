@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/navbar.dart';
 import '../widgets/footer.dart';
-import '../styles/text_styles.dart';
 
 class ContactPage extends StatelessWidget {
   const ContactPage({super.key});
@@ -13,7 +12,8 @@ class ContactPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: const [
-          Text('Contact Us', style: AppTextStyles.h2),
+          Text('Contact Us',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           SizedBox(height: 12),
           Text('Email: support@unionshopclone.com'),
           Text('Phone: +44 1234 567890'),

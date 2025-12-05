@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../widgets/navbar.dart';
 import '../../widgets/footer.dart';
-import '../../styles/text_styles.dart';
 
 class PersonalizationPage extends StatefulWidget {
   const PersonalizationPage({super.key});
@@ -23,7 +22,8 @@ class _PersonalizationPageState extends State<PersonalizationPage> {
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
-          const Text('Print Shack — Personalization', style: AppTextStyles.h2),
+          const Text('Print Shack — Personalization',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           const SizedBox(height: 16),
           TextField(
             decoration: const InputDecoration(labelText: 'Text'),
