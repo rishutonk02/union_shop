@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import '../widgets/navbar.dart';
 import '../widgets/footer.dart';
-import '../styles/text_styles.dart';
 
 class AboutPage extends StatelessWidget {
   const AboutPage({super.key});
@@ -13,14 +12,18 @@ class AboutPage extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: const [
-          Text('About union shop', style: AppTextStyles.h2),
+          Text('About Union Shop',
+              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
           SizedBox(height: 16),
           Text(
-            'Union Shop is a student‑run marketplace featuring apparel, accessories, and campus‑themed merchandise. '
-            'This project is both a learning platform and a small storefront — built with Flutter for the web to demonstrate responsive design, accessible navigation, and straightforward e‑commerce interactions. '
-            'Our merchandise helps fund student activities and gives students hands‑on experience with real‑world development workflows. '
-            'Want to contribute, suggest a product, or report a bug? Visit the project repository or contact us at hello@unionshop.example. Thank you for supporting student development!',
-            style: AppTextStyles.body,
+            'Welcome to the Union Shop — a student-run store supporting campus life. '
+            'We offer merchandise, clothing, and accessories created for students, alumni, '
+            'and friends of the university. Profits help fund student activities and campus initiatives.\n\n'
+            'This project is also an educational showcase: it demonstrates responsive Flutter web '
+            'design, client-side routing, state management, and basic e‑commerce flows used in '
+            'coursework and student projects. If you have questions or want to get involved, '
+            'please visit the Contact page or email hello@unionshop.example.',
+            style: TextStyle(fontSize: 16),
           ),
           SizedBox(height: 24),
           Footer(),
