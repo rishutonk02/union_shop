@@ -40,7 +40,7 @@ class HomePage extends StatelessWidget {
                         ),
                       ),
                       Positioned.fill(
-                        child: Container(color: Colors.black.withOpacity(0.6)),
+                        child: Container(color: Colors.black.withAlpha(153)),
                       ),
                     ],
                   ),

@@ -1,6 +1,5 @@
 # Union Shop
 Student Name - Rishu Tonk
-# Union Shop
 
 A student‑run sample e‑commerce storefront implemented with Flutter. This repository is a coursework starter and demonstration app used to teach responsive Flutter web development, routing, simple cart functionality, and testing.
 
