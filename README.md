@@ -1,3 +1,70 @@
+# Union Shop
+
+A student‑run sample e‑commerce storefront built with Flutter (web + mobile layout). This repository is a coursework starter and demonstration app used to teach responsive Flutter web development, routing, simple cart functionality, and basic testing.
+
+Status
+- Current branch: `main`
+- App styling: centralized via `lib/styles/text_styles.dart` (`AppTextStyles`).
+- Assets: sample images live in `assets/images/` and are registered in `pubspec.yaml`.
+
+Highlights
+- Homepage, collections, product pages, cart, and simple auth UI are included.
+- Centralized text styles (`AppTextStyles`) applied across the app to remove repeated inline `TextStyle(...)` usages.
+- Widget tests included (`test/`) and runnable via `flutter test`.
+
+Quick start (Windows / PowerShell)
+
+1. Ensure Flutter and Dart are installed and on your PATH. Verify with:
+
+```powershell
+flutter doctor
+```
+
+2. Get project dependencies:
+
+```powershell
+flutter pub get
+```
+
+3. Run the app on Chrome (recommended for web development):
+
+```powershell
+flutter run -d chrome
+```
+
+4. Run static analysis and tests:
+
+```powershell
+flutter analyze --no-fatal-infos
+flutter test
+```
+
+Notes about styling
+- This fork uses a centralized style file at `lib/styles/text_styles.dart` (class `AppTextStyles`). Use the named styles (for example `AppTextStyles.h1`, `AppTextStyles.body`) instead of many inline `TextStyle(...)` declarations. This makes global typography updates easier and keeps widgets concise.
+
+Assets
+- Local sample assets live in `assets/images/`. If you add new assets, update `pubspec.yaml` accordingly and run `flutter pub get`.
+
+Testing
+- Tests live in the `test/` folder. Widget tests are designed to avoid network-dependent image loading. If you add tests that rely on network images, use image fallbacks or assets to keep CI/local tests deterministic.
+
+Commit and contribution guidance
+- Commit often with focused messages. Example:
+
+```powershell
+git add .
+git commit -m "Short, descriptive message"
+git push
+```
+
+- If you want this repository to track a forked repo, set `origin` to your fork and push there.
+
+Contact / Help
+- For course staff: follow the course resources and worksheets included in the original materials.
+- For small fixes or questions about this repo, open an issue in your fork or contact the repository owner.
+
+License
+- Use this repository for learning and coursework; adapt the license to your needs. (Add a proper license file if required for your submission.)
 # Union Shop — Flutter Coursework
 
 This repository contains the coursework project for students enrolled in the **Programming Applications and Programming Languages (M30235)** and **User Experience Design and Implementation (M32605)** modules at the University of Portsmouth.
